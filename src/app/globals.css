@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+/* ============================================================
+   CREVISTA design system — tokens extracted from Figma
+   navy #002147 · navy-2 #0d2b52 · gold #c8a14b · bg #f9f9f9
+   Body: Inter · Headings: Poppins
+   ============================================================ */
+
+@theme {
+  /* Brand */
+  --color-navy: #002147;
+  --color-navy-800: #052a52;
+  --color-navy-700: #0d2b52;
+  --color-navy-600: #143869;
+  --color-navy-50: #eef2f7;
+
+  --color-gold: #c8a14b;
+  --color-gold-dark: #b08d3c;
+  --color-gold-light: #e3c987;
+
+  --color-brand-green: #2e9e5b;
+
+  /* Neutrals */
+  --color-ink: #111827;
+  --color-muted: #6c6c6c;
+  --color-muted-2: #707070;
+  --color-line: #e6e8ec;
+  --color-surface: #f9f9f9;
+  --color-surface-2: #f3f4f6;
+
+  /* Status */
+  --color-success: #1f9d57;
+  --color-danger: #d64545;
+  --color-info: #2f6fed;
+
+  /* Fonts */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-poppins), var(--font-inter), sans-serif;
+
+  /* Radii */
+  --radius-card: 14px;
+
+  /* Shadows */
+  --shadow-card: 0 1px 2px rgba(16, 24, 40, 0.04), 0 8px 24px rgba(16, 24, 40, 0.06);
+  --shadow-soft: 0 2px 8px rgba(16, 24, 40, 0.06);
+  --shadow-pop: 0 12px 40px rgba(0, 33, 71, 0.18);
+
+  /* Container */
+  --breakpoint-3xl: 1700px;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #111827;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-line);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+/* Thin, branded scrollbars for inner scroll panels */
+.scroll-thin {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd2dc transparent;
+}
+.scroll-thin::-webkit-scrollbar { width: 8px; height: 8px; }
+.scroll-thin::-webkit-scrollbar-thumb { background: #cbd2dc; border-radius: 9999px; }
+.scroll-thin::-webkit-scrollbar-track { background: transparent; }
+
+/* Hide scrollbar utility (filter rails) */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up { animation: fade-up 0.5s ease both; }
+
+/* Leaflet sits under our sticky header */
+.leaflet-container { font-family: var(--font-sans); z-index: 0; }
+.leaflet-pane, .leaflet-top, .leaflet-bottom { z-index: 1; }
