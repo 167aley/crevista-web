@@ -43,6 +43,11 @@ next-env.d.ts
 # raw Figma export (kept locally for reference, ~250MB)
 /figma-export
 
+# raw source images (served copies live in public/property-types)
+/images
+
 # local test/screenshot artifacts
 /.playwright-mcp
 *.local.log
+
+.vercel

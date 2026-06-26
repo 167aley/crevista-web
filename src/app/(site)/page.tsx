@@ -2,32 +2,36 @@ import Image from "next/image";
 import Link from "next/link";
 import { ButtonLink } from "@/components/ui/button";
 import { HeroSearch } from "@/components/search/hero-search";
-import { DataIcon } from "@/components/ui/icon";
 import { propertyTypes } from "@/lib/data";
-import { propertyPhotos, featureImages, pick } from "@/lib/assets";
+import { propertyTypeImages, featureImages } from "@/lib/assets";
 
 export default function HomePage() {
   return (
     <>
       {/* ============================ HERO ============================ */}
       {/* Solid navy base + geometric texture filling the whole hero (anchored top) */}
-      <section className="relative isolate overflow-hidden bg-navy">
-        <Image
-          src="/herosectionhomebg.png"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-top"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-navy/10 via-navy/30 to-navy/55" />
-        {/* responsive diagonal white cut at the bottom */}
-        <div
-          className="absolute inset-x-0 bottom-0 z-[1] h-10 bg-white sm:h-16 lg:h-24"
-          style={{ clipPath: "polygon(0 100%, 100% 0, 100% 100%)" }}
-        />
+      <section className="relative bg-navy">
+        {/* background layer — clipped to the hero so the image/diagonal don't spill,
+            but the section itself does NOT clip (so the search dropdown can overflow) */}
+        <div className="absolute inset-0 overflow-hidden">
+          <Image
+            src="/herosectionhomebg.png"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-top"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-navy/10 via-navy/30 to-navy/55" />
+          {/* responsive diagonal white cut at the bottom */}
+          <div
+            className="absolute inset-x-0 bottom-0 h-10 bg-white sm:h-16 lg:h-24"
+            style={{ clipPath: "polygon(0 100%, 100% 0, 100% 100%)" }}
+          />
+        </div>
 
-        <div className="relative z-10 mx-auto w-full max-w-[1100px] px-4 pb-24 pt-12 text-center sm:px-6 sm:pb-32 sm:pt-20 lg:pb-40 lg:pt-24">
+        {/* content — z-20 keeps the open dropdown above the next section */}
+        <div className="relative z-20 mx-auto w-full max-w-[1100px] px-4 pb-24 pt-12 text-center sm:px-6 sm:pb-32 sm:pt-20 lg:pb-40 lg:pt-24">
           <h1 className="mx-auto max-w-[1066px] text-balance text-[26px] font-bold leading-tight text-white sm:text-[42px] lg:text-[50px]">
             Find, Analyze &amp; Close Commercial Real Estate Deals
           </h1>
@@ -56,34 +60,21 @@ export default function HomePage() {
           </div>
 
           <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
-            {propertyTypes.map((type, i) => (
+            {propertyTypes.map((type) => (
               <Link
                 key={type.id}
                 href={`/search?deal=sale&type=${type.id}`}
                 className="group relative aspect-[234/335] overflow-hidden rounded-[9px]"
               >
+                {/* image already has the icon badge + label baked in (Figma export) —
+                    so no overlay/label is drawn on top (was causing duplicate text) */}
                 <Image
-                  src={pick(propertyPhotos, i + 2)}
+                  src={propertyTypeImages[type.id]}
                   alt={type.label}
                   fill
                   sizes="(max-width:640px) 50vw, (max-width:1024px) 33vw, 20vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                {/* black 25% overlay */}
-                <div className="absolute inset-0 bg-navy/35 transition-colors group-hover:bg-navy/45" />
-                {/* circular icon badge (48px) top-left — solid colored */}
-                <span
-                  className="absolute left-5 top-5 grid h-12 w-12 place-items-center rounded-full text-white shadow-md ring-2 ring-white/20"
-                  style={{ backgroundColor: type.color }}
-                >
-                  <DataIcon name={type.icon} className="h-6 w-6" />
-                </span>
-                {/* white extra-bold label, bottom-left */}
-                <div className="absolute inset-x-0 bottom-0 p-5">
-                  <p className="text-[18px] font-extrabold capitalize tracking-wide text-white">
-                    {type.label}
-                  </p>
-                </div>
               </Link>
             ))}
           </div>

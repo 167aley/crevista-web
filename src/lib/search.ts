@@ -28,7 +28,11 @@ export function filterListings(query: SearchQuery): Listing[] {
   }
 
   if (query.type && query.type !== "all") {
-    result = result.filter((l) => l.type === (query.type as PropertyTypeId));
+    // supports a single type or a comma-separated list (multi-select)
+    const types = query.type.split(",").map((t) => t.trim()).filter(Boolean) as PropertyTypeId[];
+    if (types.length) {
+      result = result.filter((l) => types.includes(l.type));
+    }
   }
 
   if (query.q) {

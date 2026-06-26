@@ -73,6 +73,20 @@ export const avatars = [
   A("45082fcf831d.jpg"),
 ];
 
+/** Named imagery for the "Browse by Property Type" tiles (public/property-types/<id>.png) */
+export const propertyTypeImages: Record<string, string> = {
+  office: "/property-types/office.png",
+  retail: "/property-types/retail.png",
+  industrial: "/property-types/industrial.png",
+  multifamily: "/property-types/multifamily.png",
+  land: "/property-types/land.png",
+  hospitality: "/property-types/hospitality.png",
+  "self-storage": "/property-types/self-storage.png",
+  "mixed-use": "/property-types/mixed-use.png",
+  "data-center": "/property-types/data-center.png",
+  "special-purpose": "/property-types/special-purpose.png",
+};
+
 export const featureImages = {
   pro: "/grid1.png", // CREvista Pro — provided asset
   intelligence: "/grid2.png", // Market Intelligence — provided asset
