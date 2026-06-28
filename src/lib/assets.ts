@@ -80,7 +80,7 @@ export const propertyTypeImages: Record<string, string> = {
   industrial: "/property-types/industrial.svg",
   multifamily: "/property-types/multifamily.svg",
   land: "/property-types/land.svg",
-  hospitality: "/property-types/hospitality.png",
+  hospitality: "/property-types/hospitality.svg",
   "self-storage": "/property-types/self-storage.png",
   "mixed-use": "/property-types/mixed-use.png",
   "data-center": "/property-types/data-center.png",
