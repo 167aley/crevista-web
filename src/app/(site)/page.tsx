@@ -153,7 +153,7 @@ function FeatureCard({
       <div className="absolute inset-0 bg-gradient-to-b from-white via-white/30 to-transparent" />
       <div className="relative px-6 py-10 text-center sm:px-10">
         <h3 className="text-[26px] font-extrabold text-navy-700 sm:text-[35px]">{title}</h3>
-        <p className="mx-auto mt-3 max-w-[480px] text-[15px] leading-relaxed text-navy-700 sm:text-[17px]">
+        <p className="mx-auto mt-3 max-w-[480px] text-[15px] font-medium leading-relaxed text-navy-700 sm:text-[17px]">
           {description}
         </p>
         <ButtonLink href={href} variant={ctaVariant} size="md" className="mt-6 rounded-lg px-12">
