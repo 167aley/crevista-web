@@ -83,7 +83,7 @@ export const propertyTypeImages: Record<string, string> = {
   hospitality: "/property-types/hospitality.svg",
   "self-storage": "/property-types/self-storage.svg",
   "mixed-use": "/property-types/mixed-use.svg",
-  "data-center": "/property-types/data-center.png",
+  "data-center": "/property-types/data-center.svg",
   "special-purpose": "/property-types/special-purpose.svg",
 };
 
