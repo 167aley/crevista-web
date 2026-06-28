@@ -79,7 +79,7 @@ export const propertyTypeImages: Record<string, string> = {
   retail: "/property-types/retail.png",
   industrial: "/property-types/industrial.png",
   multifamily: "/property-types/multifamily.png",
-  land: "/property-types/land.png",
+  land: "/property-types/land.svg",
   hospitality: "/property-types/hospitality.png",
   "self-storage": "/property-types/self-storage.png",
   "mixed-use": "/property-types/mixed-use.png",
