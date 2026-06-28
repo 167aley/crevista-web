@@ -89,9 +89,9 @@ export default function HomePage() {
                       >
                         <DataIcon name={type.icon} className="h-6 w-6" />
                       </span>
-                      {/* white label — bottom-left */}
-                      <div className="absolute inset-x-0 bottom-0 p-5">
-                        <p className="text-[18px] font-extrabold capitalize tracking-wide text-white">
+                      {/* white label — bottom-left (sized to match the baked-in tile labels) */}
+                      <div className="absolute inset-x-0 bottom-0 p-4">
+                        <p className="text-[22px] font-extrabold capitalize tracking-wide text-white drop-shadow">
                           {type.label}
                         </p>
                       </div>
