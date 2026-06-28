@@ -75,7 +75,7 @@ export const avatars = [
 
 /** Named imagery for the "Browse by Property Type" tiles (public/property-types/<id>.png) */
 export const propertyTypeImages: Record<string, string> = {
-  office: "/property-types/office.png",
+  office: "/property-types/office.svg",
   retail: "/property-types/retail.svg",
   industrial: "/property-types/industrial.svg",
   multifamily: "/property-types/multifamily.svg",
