@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ButtonLink } from "@/components/ui/button";
 import { HeroSearch } from "@/components/search/hero-search";
+import { DataIcon } from "@/components/ui/icon";
 import { propertyTypes } from "@/lib/data";
 import { propertyTypeImages, featureImages } from "@/lib/assets";
 
@@ -60,23 +61,45 @@ export default function HomePage() {
           </div>
 
           <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
-            {propertyTypes.map((type) => (
-              <Link
-                key={type.id}
-                href={`/search?deal=sale&type=${type.id}`}
-                className="group relative aspect-[234/335] overflow-hidden rounded-[9px]"
-              >
-                {/* image already has the icon badge + label baked in (Figma export) —
-                    so no overlay/label is drawn on top (was causing duplicate text) */}
-                <Image
-                  src={propertyTypeImages[type.id]}
-                  alt={type.label}
-                  fill
-                  sizes="(max-width:640px) 50vw, (max-width:1024px) 33vw, 20vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              </Link>
-            ))}
+            {propertyTypes.map((type) => {
+              // PNG tiles already have the badge + label baked in (Figma export).
+              // SVG tiles (e.g. Land) are plain images, so draw the badge + label on top.
+              const needsOverlay = propertyTypeImages[type.id]?.endsWith(".svg");
+              return (
+                <Link
+                  key={type.id}
+                  href={`/search?deal=sale&type=${type.id}`}
+                  className="group relative aspect-[234/335] overflow-hidden rounded-[9px]"
+                >
+                  <Image
+                    src={propertyTypeImages[type.id]}
+                    alt={type.label}
+                    fill
+                    sizes="(max-width:640px) 50vw, (max-width:1024px) 33vw, 20vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  {needsOverlay && (
+                    <>
+                      {/* bottom gradient for label legibility */}
+                      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/55 to-transparent" />
+                      {/* circular icon badge — top-left */}
+                      <span
+                        className="absolute left-5 top-5 grid h-12 w-12 place-items-center rounded-full text-white shadow-md ring-2 ring-white/20"
+                        style={{ backgroundColor: type.color }}
+                      >
+                        <DataIcon name={type.icon} className="h-6 w-6" />
+                      </span>
+                      {/* white label — bottom-left */}
+                      <div className="absolute inset-x-0 bottom-0 p-5">
+                        <p className="text-[18px] font-extrabold capitalize tracking-wide text-white">
+                          {type.label}
+                        </p>
+                      </div>
+                    </>
+                  )}
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
