@@ -77,7 +77,7 @@ export const avatars = [
 export const propertyTypeImages: Record<string, string> = {
   office: "/property-types/office.png",
   retail: "/property-types/retail.png",
-  industrial: "/property-types/industrial.png",
+  industrial: "/property-types/industrial.svg",
   multifamily: "/property-types/multifamily.svg",
   land: "/property-types/land.svg",
   hospitality: "/property-types/hospitality.png",
