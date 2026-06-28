@@ -88,8 +88,8 @@ export const propertyTypeImages: Record<string, string> = {
 };
 
 export const featureImages = {
-  pro: "/grid1.png", // CREvista Pro — provided asset
-  intelligence: "/grid2.png", // Market Intelligence — provided asset
+  pro: "/frame11.png", // CREvista Pro — provided asset
+  intelligence: "/frame12.png", // Market Intelligence — provided asset
   cta: A("e604adab5057.jpg"), // 3840×2160, ~860KB
 };
 
